@@ -1,8 +1,8 @@
 Source: iptotal
 Section: admin
 Priority: extra
-Maintainer: Debian QA Group <packages@qa.debian.org>
-Build-Depends: dpatch, debhelper (>=7), libpcap-dev, rrdtool
+Maintainer: Ignace Mouzannar <mouzannar@gmail.com>
+Build-Depends: dpatch, debhelper (>=7), libpcap-dev, rrdtool, autotools-dev
 Standards-Version: 3.8.3
 Homepage: http://sourceforge.net/projects/iptotal
 

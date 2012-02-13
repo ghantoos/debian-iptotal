@@ -3,13 +3,38 @@ Tue, 11 Nov 2003 00:26:53 +0000.
 
 It was downloaded from http://sourceforge.net/projects/iptotal
 
-Upstream Author: Antoine Megens <webmaster@dingetje.homeip.net>
+Upstream Author:
 
-Copyright: GNU General Public License (file:///usr/share/common-licenses/GPL)
+    Antoine Megens <webmaster@dingetje.homeip.net>
 
-Copyright (c) 2003 Antoine Megens
+Files: *
+Copyright:
+    2003, Antoine Megens <webmaster@dingetje.homeip.net>
+Licence: GPL
 
-You are free to distribute this software under the terms of
-the GNU General Public License.
-On Debian systems, the complete text of the GNU General Public
-License can be found in the file '/usr/share/common-licesnses/GPL'.
+Files: debian/*
+Copyright:
+    2003-2004, Millis Miller <millis@faztek.org>
+    2007, Lucas Nussbaum <lucas@lucas-nussbaum.net>
+    2008, Peter Eisentraut <petere@debian.org>
+    2009, Dario Minnucci (midget) <debian@midworld.net>
+    2009, Ignace Mouzannar <mouzannar@gmail.com>
+Licence: GPL
+
+License: GPL
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, see <http://www.gnu.org/licenses/>.
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL-2'.

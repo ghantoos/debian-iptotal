@@ -1,0 +1,7 @@
+# Defaults for iptotal initscript
+# sourced by /etc/init.d/iptotal
+# installed at /etc/default/iptotal by the maintainer scripts
+# In order to override this file, use /etc/init.d/iptotal force-start
+
+# run iptotal daemon at boot
+ENABLE_DAEMON=yes

@@ -1,0 +1,11 @@
+usr/share/iptotal/www/images/Archive_Button.gif usr/lib/iptotal/images/Archive_Button.gif
+usr/share/iptotal/www/images/Daily_Button.gif usr/lib/iptotal/images/Daily_Button.gif
+usr/share/iptotal/www/images/email_@anim.gif usr/lib/iptotal/images/email_@anim.gif
+usr/share/iptotal/www/images/home.gif usr/lib/iptotal/images/home.gif
+usr/share/iptotal/www/images/Howto_Button.gif usr/lib/iptotal/images/Howto_Button.gif
+usr/share/iptotal/www/images/Month_Button.gif usr/lib/iptotal/images/Month_Button.gif
+usr/share/iptotal/www/images/Week_Button.gif usr/lib/iptotal/images/Week_Button.gif
+usr/share/iptotal/www/images/Year_Button.gif usr/lib/iptotal/images/Year_Button.gif
+usr/share/iptotal/www/images/zertxtr.gif usr/lib/iptotal/images/zertxtr.gif
+usr/share/iptotal/www/template.html usr/lib/iptotal/template.html
+etc/iptotal/apache.conf /etc/apache2/conf.d/iptotal

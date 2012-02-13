@@ -1,3 +1,53 @@
+iptotal (0.3.3-9) unstable; urgency=low
+
+  * New maintainer. (Closes: #473843)
+  * debian/rules:
+    - Moved the copying of /usr/share/misc/config.{sub,guess} from the clean
+      section to the configure section. And added functions to backup/restore
+      the config{sud,guess} files provided by upstream.
+    - Changed the data directory from /var/www/iptotal to 
+      /usr/lib/iptotal/ (user content) and /usr/share/iptotal/www (static).
+      (Closes: #553536)
+    - Moved configuration file from /etc/ to /etc/iptotal/ directory.
+    - Added dh_lintian in the binary-arch section to install the override file.
+  * debian/control:
+    - Added build dependency on autotools-dev.
+  * debian/patches:
+    - Added 05_fix_old_fixes.dpatch: Includes all changes made by original
+      maintainer outside the debian/ directory.
+    - Updated the 00list placing 05_fix_old_fixes.dpatch before 
+      04_fix_kbytes_sufixes.dpatch.
+  * debian/init:
+    - Renamed debian/init.d to debian/init.
+    - Added a short description.
+    - Forced deletion of the pid file as daemon does not take care of this.
+    - Added support for /etc/default/iptotal
+    - Added force-start option, to start the daemon, ignoring the content of 
+      the /etc/default/iptotal file.
+  * debian/postinst:
+    - Reloads apache2 configuration.
+    - As installation path has changed in this release, added a temporary
+      copying of old files to the new working directory, to prevent data
+      history loss.
+  * debian/copyright:
+    - Updated copyright file format.
+  * Added apache configuration file (i.e. debian/apache.conf).
+  * Added debian/dirs to create both cgi and working directories.
+  * Added debian/links to link the static content to the working directory
+    (i.e. /usr/lib/iptotal).
+  * Added debian/install file in order to clean up the debian/rules file.
+  * Added debian/postrm file to reload apache2 configuration after purging
+    or removing the iptotal package.
+  * Added debian/default file, in order to easily disable iptotald.
+    (Closes: #317260)
+  * Moved iptotal.8 man page to the debian/ directory as it isn't provided
+    by upstream.
+  * Added a lintian override of package-contains-empty-directory, as the
+    /usr/lib/iptotal/archive/ directory is intentionally created empty during
+    the initial installation.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Sun, 15 Nov 2009 21:11:05 +0100
+
 iptotal (0.3.3-8) unstable; urgency=medium
 
   * QA upload.

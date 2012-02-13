@@ -25,7 +25,19 @@ include /usr/share/dpatch/dpatch.make
 
 config.status: configure
 	dh_testdir
-	./configure $(confflags) --prefix=/usr --mandir=\$${prefix}/share/man --datadir=/var/www/iptotal --sysconf=/etc
+ifeq "$(wildcard config.sub.bak)" ""
+	cp -f config.sub config.sub.bak
+endif
+ifeq "$(wildcard config.guess.bak)" ""
+	cp -f config.guess config.guess.bak
+endif
+ifneq "$(wildcard /usr/share/misc/config.sub)" ""
+	cp -f /usr/share/misc/config.sub config.sub
+endif
+ifneq "$(wildcard /usr/share/misc/config.guess)" ""
+	cp -f /usr/share/misc/config.guess config.guess
+endif
+	./configure $(confflags) --prefix=/usr --mandir=\$${prefix}/share/man --datadir=/usr/lib/iptotal --sysconf=/etc/iptotal
 
 build: build-stamp
 build-stamp:  config.status patch-stamp
@@ -39,11 +51,11 @@ clean: unpatch
 	rm -f build-stamp 
 
 	[ ! -f Makefile ] || $(MAKE) distclean
-ifneq "$(wildcard /usr/share/misc/config.sub)" ""
-	cp -f /usr/share/misc/config.sub config.sub
+ifneq "$(wildcard config.sub.bak)" ""
+	mv config.sub.bak config.sub
 endif
-ifneq "$(wildcard /usr/share/misc/config.guess)" ""
-	cp -f /usr/share/misc/config.guess config.guess
+ifneq "$(wildcard config.guess.bak)" ""
+	mv config.guess.bak config.guess
 endif
 	dh_clean 
 
@@ -53,13 +65,12 @@ install: build
 	dh_prep 
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/iptotal
-	mkdir -p $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal
-	mkdir -p $(CURDIR)/debian/iptotal/var/www/iptotal/archive
-	mv $(CURDIR)/debian/iptotal/var/www/iptotal/*.cgi $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal
+	mv $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.cgi $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal
 	for i in $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal/*.cgi; do chmod +x $$i; done
-	chown www-data:www-data $(CURDIR)/debian/iptotal/var/www/iptotal/archive 
-	chown -R www-data:www-data $(CURDIR)/debian/iptotal/var/www/iptotal/images
-	rm $(CURDIR)/debian/iptotal/var/www/iptotal/*.gif
+	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.gif
+	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.png
+	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/archive/*.png
+	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/images/*.png
 
 binary-arch: build install
 	dh_testdir
@@ -70,6 +81,7 @@ binary-arch: build install
 	dh_install
 	dh_installinit
 	dh_installman
+	dh_lintian
 	dh_link
 	dh_strip
 	dh_compress

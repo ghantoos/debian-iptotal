@@ -1,8 +1,11 @@
 #! /bin/sh /usr/share/dpatch/dpatch-run
 ## 03_manpage_fixes.dpatch by Dario Minnucci (midget) <debian@midworld.net>
+## updated by Ignace Mouzannar <mouzannar@gmail.com>
 ##
 ## All lines beginning with `## DP:' are a description of the patch.
 ## DP: Manpage fixes (see BTS #379785)
+## DP: Updated, removing changes on iptotal.8 (as this file was moved to the 
+## DP: debian/ directory).
 
 @DPATCH@
 diff -urNad iptotal-0.3.3~/iptotal.1 iptotal-0.3.3/iptotal.1
@@ -25,27 +28,6 @@ diff -urNad iptotal-0.3.3~/iptotal.1 iptotal-0.3.3/iptotal.1
 +/etc/iptotal.cfg
  File that defines the default configuration used. See
  iptotald_config(5) for more details.
- 
-diff -urNad iptotal-0.3.3~/iptotal.8 iptotal-0.3.3/iptotal.8
---- iptotal-0.3.3~/iptotal.8	2009-08-29 05:41:12.000000000 +0200
-+++ iptotal-0.3.3/iptotal.8	2009-08-29 05:49:12.147997435 +0200
-@@ -15,7 +15,7 @@
- .SH OPTIONS
- .TP
- \fB\-c\fR <filename>
--Read configuration file. Default is /etc/iptotal.conf.
-+Read configuration file. Default is /etc/iptotal.cfg.
- .TP
- \fB\-C\fR 
- Ignore configuration file.
-@@ -47,7 +47,7 @@
- 
- .SH CONFIGURATION FILE
- .TP
--/etc/iptotal.conf
-+/etc/iptotal.cfg
- File that defines the default configuration used. See
- iptotal_config(5) for more details.
  
 diff -urNad iptotal-0.3.3~/iptotal_config.5 iptotal-0.3.3/iptotal_config.5
 --- iptotal-0.3.3~/iptotal_config.5	2009-08-29 05:41:12.000000000 +0200

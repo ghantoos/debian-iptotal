@@ -1,4 +1,5 @@
 01_fix_ownership.dpatch
 02_fix_for_arm_systems.dpatch
 03_manpage_fixes.dpatch
+05_fix_old_fixes.dpatch
 04_fix_kbytes_sufixes.dpatch
