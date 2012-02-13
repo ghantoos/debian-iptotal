@@ -1,3 +1,21 @@
+iptotal (0.3.3-10) unstable; urgency=low
+
+  * Fixes the FTBFS on GNU/kFreeBSD using a patch provided by Cyril Brulebois
+    <kibi@debian.org>. (Closes: #557165)
+  * Converted to "3.0 (quilt)" format.
+  * debian/rules:
+    - Removed the include of dpatch.make.
+    - Removed dh_testroot from the clean section.
+  * debian/patches:
+    - Converted all patches from dpatch(1) to quilt(1) format.
+  * debian/control:
+    - Removed dependecy on dpatch.
+    - Added a dependency on quilt.
+  * debian/source/format:
+    - New file set to "3.0 (quilt)".
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Fri, 20 Nov 2009 15:09:43 +0100
+
 iptotal (0.3.3-9) unstable; urgency=low
 
   * New maintainer. (Closes: #473843)

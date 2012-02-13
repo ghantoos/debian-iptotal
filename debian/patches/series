@@ -1,0 +1,6 @@
+01_fix_ownership.diff
+02_fix_for_arm_systems.diff
+03_manpage_fixes.diff
+05_fix_old_fixes.diff
+04_fix_kbytes_sufixes.diff
+06_FTBFS_kFreeBSD.diff

@@ -1,0 +1,17 @@
+Description:
+ - Fix for ARM systems (see BTS #459128)
+Author: Dario Minnucci (midget) <debian@midworld.net>
+Last-Update: 2009-08-25
+
+diff -urNad iptotal-0.3.3~/iptotal.c iptotal-0.3.3/iptotal.c
+--- iptotal-0.3.3~/iptotal.c	2003-12-12 12:54:10.000000000 +0100
++++ iptotal-0.3.3/iptotal.c	2009-08-25 02:56:30.873591709 +0200
+@@ -464,7 +464,7 @@
+ /*  Read options from command line  */
+ void read_options (int argc, char *argv[]) {
+ 
+-     char optchar;
++     signed char optchar;
+      while(-1 != (optchar=getopt(argc,argv,"a:Ab:c:Cd:Ff:hl:L:m:M:o:Pr:t:v")))
+      {
+ 		switch (optchar) {

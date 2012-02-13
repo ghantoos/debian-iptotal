@@ -1,0 +1,26 @@
+Description:
+ - Fixes FTBFS on GNU/kFreeBSD.
+Author: Cyril Brulebois <kibi@debian.org>
+Last-Update: 2009-11-20
+
+diff -urNad iptotal-0.3.3~/iptotal.c iptotal-0.3.3/iptotal.c
+--- iptotal-0.3.3~/iptotal.c	2009-11-20 15:14:20.000000000 +0100
++++ iptotal-0.3.3/iptotal.c	2009-11-20 15:16:36.000000000 +0100
+@@ -44,10 +44,16 @@
+ #include <signal.h>
+ #include <unistd.h>
+ #include <time.h>
+-#include <netinet/in.h>			
++#include <netinet/in.h>
++#ifdef __linux__
+ #include <linux/if.h>
++#else
++#include <net/if.h>
++#endif
+ #include <errno.h>
++#ifdef __linux
+ #include <asm/errno.h>			/* for EINVAL */
++#endif
+ 
+ /*
+ ------------------------------------------------------------------------

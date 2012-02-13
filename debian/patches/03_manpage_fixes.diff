@@ -1,0 +1,57 @@
+Description:
+ - Manpage fixes (see BTS #379785)
+ - Updated, removing changes on iptotal.8 (as this file was moved to the 
+   debian/ directory).
+Authors:
+ - Dario Minnucci (midget) <debian@midworld.net>
+Updated by:
+ - Ignace Mouzannar <mouzannar@gmail.com>
+Last-Update: 2009-11-15
+
+diff -urNad iptotal-0.3.3~/iptotal.1 iptotal-0.3.3/iptotal.1
+--- iptotal-0.3.3~/iptotal.1	2009-08-29 05:41:12.000000000 +0200
++++ iptotal-0.3.3/iptotal.1	2009-08-29 05:49:12.147997435 +0200
+@@ -15,7 +15,7 @@
+ .SH OPTIONS
+ .TP
+ \fB\-c\fR <filename>
+-Read configuration file. Default is /etc/iptotal.conf.
++Read configuration file. Default is /etc/iptotal.cfg.
+ .TP
+ \fB\-C\fR 
+ Ignore configuration file.
+@@ -47,7 +47,7 @@
+ 
+ .SH CONFIGURATION FILE
+ .TP
+-/etc/iptotal.conf
++/etc/iptotal.cfg
+ File that defines the default configuration used. See
+ iptotald_config(5) for more details.
+ 
+diff -urNad iptotal-0.3.3~/iptotal_config.5 iptotal-0.3.3/iptotal_config.5
+--- iptotal-0.3.3~/iptotal_config.5	2009-08-29 05:41:12.000000000 +0200
++++ iptotal-0.3.3/iptotal_config.5	2009-08-29 05:49:30.767997684 +0200
+@@ -3,11 +3,11 @@
+ iptotal_config \- iptotal configuration file
+ 
+ .SH SYNOPSIS
+-.B \fI/etc/iptotal.conf\fR
++.B \fI/etc/iptotal.cfg\fR
+ .br
+ .SH DESCRIPTION
+ .B iptotal
+-reads configuration data from /etc/iptotal.conf (or the file specified with -c on the command line).  The file contains keyword-argument pairs, one per line.  Lines starting with '#' and empty lines are interpreted as comments.  
++reads configuration data from /etc/iptotal.cfg (or the file specified with \-c on the command line).  The file contains keyword-argument pairs, one per line.  Lines starting with '#' and empty lines are interpreted as comments.  
+ 
+ The possible keywords and their meanings are as follows (note that keywords are case-insensitive and arguments are case-sensitive):
+ 
+@@ -34,7 +34,7 @@
+ 
+ .SH FILES
+ .TP
+-/etc/iptotal.conf
++/etc/iptotal.cfg
+ File that defines the configuration used to invoke iptotal(1). 
+ 
+ .SH AUTHOR

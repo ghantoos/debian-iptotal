@@ -20,9 +20,6 @@ else
 endif
 
 
-include /usr/share/dpatch/dpatch.make
-
-
 config.status: configure
 	dh_testdir
 ifeq "$(wildcard config.sub.bak)" ""
@@ -40,14 +37,13 @@ endif
 	./configure $(confflags) --prefix=/usr --mandir=\$${prefix}/share/man --datadir=/usr/lib/iptotal --sysconf=/etc/iptotal
 
 build: build-stamp
-build-stamp:  config.status patch-stamp
+build-stamp:  config.status
 	dh_testdir
 	$(MAKE)
 	touch build-stamp
 
-clean: unpatch
+clean:
 	dh_testdir
-	dh_testroot
 	rm -f build-stamp 
 
 	[ ! -f Makefile ] || $(MAKE) distclean
