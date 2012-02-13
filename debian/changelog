@@ -1,0 +1,127 @@
+iptotal (0.3.3-8) unstable; urgency=medium
+
+  * QA upload.
+  * Added patch system (dpatch)
+  * debian/patches: 01_fix_ownership.dpatch
+  * debian/patches: 02_fix_for_arm_systems.dpatch (Closes: #459128) 
+  * debian/patches: 03_manpage_fixes.dpatch (Closes: #379785) 
+  * debian/patches: 03_fix_kbytes_sufixes.dpatch (Closes: #362480) 
+  * debian/postinst: Fix ownership (Closes: #515951) 
+  * debian/control: Compat version updated to >=7
+  * Standards-Version: Updated to 3.8.3
+     - debian/README.source file
+  * debian/control: Homepage field added
+  * debian/watch: Added
+
+ -- Dario Minnucci (midget) <debian@midworld.net>  Tue, 25 Aug 2009 03:33:37 +0200
+
+iptotal (0.3.3-7) unstable; urgency=low
+
+  * QA upload.
+  * Changed maintainer to Debian QA Group
+  * Cleaned up debian/rules
+  * Removed empty maintainer scripts
+  * Updated standards version
+  * Changed dependency apache to apache2
+
+ -- Peter Eisentraut <petere@debian.org>  Mon, 16 Jun 2008 23:59:31 +0200
+
+iptotal (0.3.3-6.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Added LSB formatted dependency info in init.d script (closes: #468185)
+
+ -- Peter Eisentraut <petere@debian.org>  Wed, 02 Apr 2008 00:23:08 +0200
+
+iptotal (0.3.3-6.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Switched to using invoke-rc.d in maintainer scripts (Closes: #367731).
+
+ -- Lucas Nussbaum <lucas@lucas-nussbaum.net>  Sun, 30 Sep 2007 12:42:31 +0200
+
+iptotal (0.3.3-6) unstable; urgency=low
+
+  * Correct image paths in template.html (Closes: #259047) 
+
+ -- Millis Miller <millis@faztek.org>  Wed, 18 Aug 2004 21:54:26 +0100
+
+iptotal (0.3.3-5) unstable; urgency=medium
+
+  * Remove dh_installinit helper files and make scripts manually (Closes: #248988) 
+
+ -- Millis Miller <millis@faztek.org>  Sat, 26 Jun 2004 01:07:42 +0100
+
+iptotal (0.3.3-4) unstable; urgency=medium
+
+  * Added content to NEWS file (to remove lintian warning)
+  * Moved iptotal manpage to section 8 (lintian warning) plus other
+  *  minor manpage corrections
+
+ -- Millis Miller <millis@faztek.org>  Wed, 16 Jun 2004 00:08:03 +0100
+
+iptotal (0.3.3-3) unstable; urgency=medium
+
+  * Don't fail stop if daemon not running (Closes: #248988)
+
+ -- Millis Miller <millis@faztek.org>  Fri,  11 Jun 2004 09:22:12 +0100
+
+iptotal (0.3.3-2) unstable; urgency=low
+
+  * Remove surplus .gif files in /var/www/iptotal (Closes: #236158)
+  * Also alter template.html use of paths for cgis (as suggested in #236158)
+  * Remove use of prerm file (Closes: #234742)
+
+ -- Millis Miller <millis@faztek.org>  Sun,  2 May 2004 01:21:11 +0100
+
+iptotal (0.3.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Made priority extra to correct debcheck error
+  * Added non-virtual depend of 'apache' to remove lintian error
+  * Removed conffiles (not needed)
+  * Added 'iptotal' to cgi.in files for images directory (Closes: #231055)
+  * Remove images/*.png as derived files (Closes: #231295)
+  * Start/stop deamon on install/remove (Closes: #231398)
+
+ -- Millis Miller <millis@faztek.org>  Sat, 14 Feb 2004 00:16:07 +0000
+
+iptotal (0.3.2-5) unstable; urgency=low
+
+  * Fixed the daemon to go into background 
+
+ -- Millis Miller <millis@faztek.org>  Wed, 28 Jan 2004 00:20:50 +0000
+
+iptotal (0.3.2-4) unstable; urgency=low
+
+  * First correct version uploaded to Debian (Closes: #217563)
+  * Place files in /usr/lib/cgi-bin directory (not /var/www) 
+  * Change depend to be on virtual package 'httpd'
+  * Add /etc/iptotal.cfg to conffiles
+  * Correct path specifiers in *.cgi and iptotal.cfg files
+  * Correctly create subdirectories archive/ and images/
+  * Correct homepage link
+  * Separate cgi and html files
+
+ -- Millis Miller <millis@faztek.org>  Tue, 27 Jan 2004 13:52:07 +0000
+
+iptotal (0.3.2-3) unstable; urgency=low
+
+  * Fixed a missing depend for shared libs (${shlibs:Depends})
+  * Uploaded for Millis by Jaldhar H. Vyas <jaldhar@debian.org>
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Sat, 24 Jan 2004 22:34:52 -0500
+
+iptotal (0.3.2-1) unstable; urgency=low
+
+  * New upstream version.
+  * Some fixes to the Makefiles to install files into /var/www/iptotal
+  * Uploaded for Millis by Jaldhar H. Vyas <jaldhar@debian.org>
+
+ -- Jaldhar H. Vyas <jaldhar@debian.org>  Mon, 12 Jan 2004 18:15:30 -0500
+
+iptotal (0.3.1-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Millis Miller <millis@faztek.org>  Tue, 11 Nov 2003 00:26:53 +0000

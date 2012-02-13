@@ -1,0 +1,133 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 03_fix_kbytes_sufixes.dpatch by Dario Minnucci (midget) <debian@midworld.net>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Normalization of kbyte(s) sufixes. (see #362480)
+
+@DPATCH@
+diff -urNad iptotal-0.3.3~/iptotal.c iptotal-0.3.3/iptotal.c
+--- iptotal-0.3.3~/iptotal.c	2009-08-25 03:12:52.813581701 +0200
++++ iptotal-0.3.3/iptotal.c	2009-08-25 03:16:03.845591718 +0200
+@@ -417,7 +417,7 @@
+ 	   double din = (double) intotal / div;
+ 	   double dout = (double) outtotal / div;
+ 	   t0 = t1;
+-	   printf("Total: %5.2f kBytes/s In: %5.2f Kbytes/s Out: %5.2f Kbytes/s\n",
++	   printf("Total: %5.2f kbyte(s) In: %5.2f kbyte(s) Out: %5.2f kbyte(s)\n",
+ 			dtotal, din, dout);
+ 	   total =0; intotal=0; outtotal=0;
+ 	   break;
+diff -urNad iptotal-0.3.3~/src/iptotald.in iptotal-0.3.3/src/iptotald.in
+--- iptotal-0.3.3~/src/iptotald.in	2009-08-25 03:12:52.821573691 +0200
++++ iptotal-0.3.3/src/iptotald.in	2009-08-25 03:17:03.129582449 +0200
+@@ -51,8 +51,8 @@
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE \
+           DEF:maxin=@datadir@/iptotal.rrd:input:MAX \
+           DEF:maxout=@datadir@/iptotal.rrd:output:MAX \
+-          AREA:in#009828:"In kByte/s" \
+-          LINE2:out#ff0000:"Out kByte/s" \
++          AREA:in#009828:"In kbyte(s)" \
++          LINE2:out#ff0000:"Out kbyte(s)" \
+           LINE2:maxin#0030ff:"Max In" \
+           LINE2:maxout#ff8040:"Max Out"
+ 
+@@ -120,7 +120,7 @@
+ 		set $RESULT
+ 		#
+ 		#  $1   $2  $3     $4 $5  $6      $7  $8
+-		#Total: 0 kBytes/s In: 0 Kbytes/s Out: 0 Kbytes/s
++		#Total: 0 kbyte(s) In: 0 kbyte(s) Out: 0 kbyte(s)
+ 		#--------------------------------------------------
+ 		# we need 2nd, 5th and 8th element of the output
+ 		#--------------------------------------------------
+diff -urNad iptotal-0.3.3~/www/iptotal.cgi.in iptotal-0.3.3/www/iptotal.cgi.in
+--- iptotal-0.3.3~/www/iptotal.cgi.in	2009-08-25 01:24:19.000000000 +0200
++++ iptotal-0.3.3/www/iptotal.cgi.in	2009-08-25 03:19:42.013568202 +0200
+@@ -57,11 +57,11 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-2h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kB/s">'
++	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+-          AREA:in#009828:"In kByte/s"
+-          LINE2:out#ff0000:"Out kByte/s"
++          AREA:in#009828:"In kbyte(s)"
++          LINE2:out#ff0000:"Out kbyte(s)"
+           >
+ </P>
+ <HR>
+@@ -73,13 +73,13 @@
+           --height 150
+           --end 'now-60s'
+           --start 'end-24h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kB/s">'
++	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+           DEF:maxin=@datadir@/iptotal.rrd:input:MAX
+           DEF:maxout=@datadir@/iptotal.rrd:output:MAX
+-          AREA:in#009828:"In kByte/s"
+-          LINE2:out#ff0000:"Out kByte/s"
++          AREA:in#009828:"In kbyte(s)"
++          LINE2:out#ff0000:"Out kbyte(s)"
+           LINE2:maxin#0030ff:"Max In"
+           LINE2:maxout#ff8040:"Max Out"
+           >
+diff -urNad iptotal-0.3.3~/www/iptotal_m.cgi.in iptotal-0.3.3/www/iptotal_m.cgi.in
+--- iptotal-0.3.3~/www/iptotal_m.cgi.in	2009-08-25 01:24:19.000000000 +0200
++++ iptotal-0.3.3/www/iptotal_m.cgi.in	2009-08-25 03:18:39.105591585 +0200
+@@ -57,12 +57,12 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-744h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kB/s">'
++	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:inmax=@datadir@/iptotal.rrd:input:MAX
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+-          AREA:inmax#009828:"In kByte/s"
+-          LINE2:out#ff0000:"Out kByte/s"
++          AREA:inmax#009828:"In kbyte(s)"
++          LINE2:out#ff0000:"Out kbyte(s)"
+           LINE2:in#0000ff:"In Avg."
+           >
+ </P>
+diff -urNad iptotal-0.3.3~/www/iptotal_w.cgi.in iptotal-0.3.3/www/iptotal_w.cgi.in
+--- iptotal-0.3.3~/www/iptotal_w.cgi.in	2009-08-25 01:24:19.000000000 +0200
++++ iptotal-0.3.3/www/iptotal_w.cgi.in	2009-08-25 03:18:00.253567912 +0200
+@@ -57,12 +57,12 @@
+           --height 150
+           --end 'now-60s'
+           --start 'end-168h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kB/s">'
++	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
+           DEF:inmax=@datadir@/iptotal.rrd:input:MAX
+           DEF:outmax=@datadir@/iptotal.rrd:output:MAX
+           DEF:inavg=@datadir@/iptotal.rrd:input:AVERAGE
+-          AREA:inmax#009828:"In kByte/s"
+-          LINE2:outmax#ff0000:"Out kByte/s"
++          AREA:inmax#009828:"In kbyte(s)"
++          LINE2:outmax#ff0000:"Out kbyte(s)"
+           LINE2:inavg#0000ff:"In Avg."
+           >
+ </P>
+diff -urNad iptotal-0.3.3~/www/iptotal_y.cgi.in iptotal-0.3.3/www/iptotal_y.cgi.in
+--- iptotal-0.3.3~/www/iptotal_y.cgi.in	2009-08-25 01:24:19.000000000 +0200
++++ iptotal-0.3.3/www/iptotal_y.cgi.in	2009-08-25 03:19:02.217567884 +0200
+@@ -57,11 +57,11 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-365d'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kB/s">'
++	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+-          AREA:in#009828:"In kByte/s"
+-          LINE2:out#ff0000:"Out kByte/s"
++          AREA:in#009828:"In kbyte(s)"
++          LINE2:out#ff0000:"Out kbyte(s)"
+           >
+ </P>
+ <HR>

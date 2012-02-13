@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Author: Dario Minnucci <debian@midworld.net>
+# Date:   Tue, 25 Aug 2009 02:52:05 +0200
+#
+
+set -e
+
+chown -R www-data:www-data /var/www/iptotal/*
+
+#DEBHELPER#
+

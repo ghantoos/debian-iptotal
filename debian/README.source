@@ -1,0 +1,9 @@
+README.source
+-------------
+
+ The Debian package uses dpatch(1) for the modifications of the upstream source.
+ If you want to change something it is best to use the dpatch approach as documented
+ in /usr/share/doc/dpatch/README.source.gz
+
+ -- Dario Minnucci <debian@midworld.net>  Tue, 25 Aug 2009 02:47:56 +0200
+

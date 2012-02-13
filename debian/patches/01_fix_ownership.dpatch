@@ -1,0 +1,30 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_fix_ownership.dpatch by Dario Minnucci (midget) <debian@midworld.net>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Change ownership to www-data:www-data ( see RC Bug #515951).
+
+@DPATCH@
+diff -urNad iptotal-0.3.3~/src/iptotald.in iptotal-0.3.3/src/iptotald.in
+--- iptotal-0.3.3~/src/iptotald.in	2009-08-29 05:41:12.759997162 +0200
++++ iptotal-0.3.3/src/iptotald.in	2009-08-29 05:41:16.236015691 +0200
+@@ -87,7 +87,7 @@
+ 		RRA:MAX:0.5:1440:365
+ 
+ 	# make it readable for user nobody (HTTP user)
+-	chown nobody $ETH_DBASE
++	chown www-data:www-data $ETH_DBASE
+ fi
+ 
+ #
+@@ -137,6 +137,10 @@
+ 		#
+ 		# show result in text file for web page to include
+ 		#
++		if [ ! -f @datadir@/result.txt ]; then
++			touch @datadir@/result.txt
++			chown www-data:www-data @datadir@/result.txt
++		fi
+ 		echo $RESULT > @datadir@/result.txt
+ 
+ 		#---------------------------
