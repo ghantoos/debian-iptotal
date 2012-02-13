@@ -1,0 +1,32 @@
+Using iptotal with Apache2:
+---------------------------
+An apache configuration file template is shipped with this package. In order to
+use it, it should be symlinked inside apache2's configuration folder:
+  $ sudo ln -s /etc/iptotal/apache.conf /etc/apache2/conf.d/
+Then reload apache2 configuration:
+  $ sudo /etc/init.d/apache2 reload
+
+Note concerning iptotal's data directory:
+-----------------------------------------
+Some important changes have been applied to iptotal's data directory over the
+last releases:
+* Upgrading from a version lower than 0.3.3-8:
+  In this version, the data directory is set to /var/www/iptotal. As the
+  /var/www direcotry is not stated in the FHS to be a standard directory, the
+  iptotal data was moved to /var/lib/iptotal and /usr/share/iptotal/www.
+  As a result, when upgrading from 0.3.3-8 (or an older release) to the current
+  release of iptotal:
+   - generated files from your older installation are moved from
+     /var/www/iptotal to /var/lib/iptotal.
+   - static files that are shipped within this package are moved to
+     /usr/share/iptotal/www.
+
+* Upgrading from 0.3.3-10:
+  When upgrading from this version to the current release:
+   - generated files from your older installation are moved from
+     /usr/lib/iptotal to /var/lib/iptotal.
+
+For more information about these directory changes, please refer to the 
+following bug reports:
+ - http://bugs.debian.org/553536
+ - http://bugs.debian.org/557972

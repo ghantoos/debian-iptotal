@@ -4,3 +4,5 @@
 05_fix_old_fixes.diff
 04_fix_kbytes_sufixes.diff
 06_FTBFS_kFreeBSD.diff
+07_cgi_filename.diff
+08_datalink_offset.diff

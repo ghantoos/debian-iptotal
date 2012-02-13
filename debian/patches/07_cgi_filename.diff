@@ -1,0 +1,58 @@
+Description: Fixes incorrect filenames for graph images
+    - This patch closes bug#574121
+Author: Ignace Mouzannar <mouzannar@gmail.com>
+Last-Update: 2010-03-20
+
+--- a/www/iptotal.cgi.in
++++ b/www/iptotal.cgi.in
+@@ -57,7 +57,7 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-2h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
++          --imginfo '<IMG SRC=/iptotal/images/eth_2hr.png ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+           AREA:in#009828:"In kbyte(s)"
+@@ -73,7 +73,7 @@
+           --height 150
+           --end 'now-60s'
+           --start 'end-24h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
++          --imginfo '<IMG SRC=/iptotal/images/eth_day.png ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+           DEF:maxin=@datadir@/iptotal.rrd:input:MAX
+--- a/www/iptotal_m.cgi.in
++++ b/www/iptotal_m.cgi.in
+@@ -57,7 +57,7 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-744h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
++          --imginfo '<IMG SRC=/iptotal/images/eth_month.png ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:inmax=@datadir@/iptotal.rrd:input:MAX
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+--- a/www/iptotal_w.cgi.in
++++ b/www/iptotal_w.cgi.in
+@@ -57,7 +57,7 @@
+           --height 150
+           --end 'now-60s'
+           --start 'end-168h'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
++          --imginfo '<IMG SRC=/iptotal/images/eth_week.png ALT="kbyte(s)">'
+           DEF:inmax=@datadir@/iptotal.rrd:input:MAX
+           DEF:outmax=@datadir@/iptotal.rrd:output:MAX
+           DEF:inavg=@datadir@/iptotal.rrd:input:AVERAGE
+--- a/www/iptotal_y.cgi.in
++++ b/www/iptotal_y.cgi.in
+@@ -57,7 +57,7 @@
+           --lazy
+           --end 'now-60s'
+           --start 'end-365d'
+-	  --imginfo '<IMG SRC=/iptotal/images/%s ALT="kbyte(s)">'
++          --imginfo '<IMG SRC=/iptotal/images/eth_year.png ALT="kbyte(s)">'
+           DEF:in=@datadir@/iptotal.rrd:input:AVERAGE
+           DEF:out=@datadir@/iptotal.rrd:output:AVERAGE
+           AREA:in#009828:"In kbyte(s)"

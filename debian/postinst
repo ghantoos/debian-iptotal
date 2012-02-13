@@ -9,9 +9,6 @@ set -e
 
 case "$1" in
 	configure)
-	    # reload apache2 configuration
-	    invoke-rc.d apache2 reload
-
         # Copy old user files (if they are present)
         # Check archive and images directories
         for folder in archive images
@@ -27,7 +24,7 @@ case "$1" in
                 rm -f /usr/lib/iptotal/${folder}/*
                 rm -f /var/www/iptotal/${folder}/*
             elif [ -d "/var/www/iptotal/${folder}" ]; then
-            # case of update from 0.3.3-9 or older in which the working
+            # case of update from 0.3.3-8 or older in which the working
             # directory is /var/www/iptotal/
                 for file in `find /var/www/iptotal/${folder}/ -maxdepth 1 -type f`
                 do

@@ -1,0 +1,25 @@
+Description: Fixes iptotal not reporting traffic on PPP insterface.
+    - This patch closes bug#230649
+Author: Antoine Megens <webmaster@dingetje.homeip.net>
+Last-Update: 2010-06-01
+
+--- a/iptotal.c
++++ b/iptotal.c
+@@ -75,6 +75,7 @@
+ #define PLEN 68 
+ 
+ /*  Length of packet headers */
++#define POFF_SLL  16
+ #define POFF_ETH  14
+ #define POFF_PPP   4
+ #define POFF_RAW   0
+@@ -579,6 +580,9 @@
+ 		case DLT_RAW:
+ 			PacketOffset = POFF_RAW;
+ 			break;
++        case DLT_LINUX_SLL:
++            PacketOffset = POFF_SLL;
++            break;
+ 		/* For others we guess  */
+ 		default:
+ 			PacketOffset = 0;

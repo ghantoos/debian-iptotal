@@ -8,4 +8,3 @@ usr/share/iptotal/www/images/Week_Button.gif var/lib/iptotal/images/Week_Button.
 usr/share/iptotal/www/images/Year_Button.gif var/lib/iptotal/images/Year_Button.gif
 usr/share/iptotal/www/images/zertxtr.gif var/lib/iptotal/images/zertxtr.gif
 usr/share/iptotal/www/template.html var/lib/iptotal/template.html
-etc/iptotal/apache.conf /etc/apache2/conf.d/iptotal

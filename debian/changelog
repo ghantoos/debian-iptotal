@@ -1,3 +1,43 @@
+iptotal (0.3.3-13) unstable; urgency=low
+
+  * debian/control:
+    - Added Vcs-Svn and Vcs-Browser fields as iptotal is now maintained in the
+      ext-maint SVN repository.
+    - Bumped Standards-Version to 3.9.1.
+  * debian/patches:
+    - 08_datalink_offset.diff: fixes iptotal not reporting traffic on PPP
+      insterfaces. (Closes: #230649)
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Mon, 06 Sep 2010 20:44:49 +0200
+
+iptotal (0.3.3-12) unstable; urgency=low
+
+  * debian/control:
+    - Bumped Standards-Version to 3.8.4.
+    - Added dependency on ${misc:Depends}.
+    - Set dependency on debhelper to (>= 7.0.50~) in order to use dh7 features.
+    - Set dependency on autotools-dev to (>=20100122.1) to enable the use of
+      the dh7 addons.
+    - Removed dependency on quilt (as source format is now "3.0 (quilt)")
+  * debian/rules:
+    - Updated the rules file to use the dh7 features.
+  * debian/postinst:
+    - Removed the reload of apache2, as iptotal depends on httpd and not
+      apache2. (Closes: #572246)
+  * debian/postrm:
+    - Removed the reload of apache2.
+  * debian/links:
+    - Removed the linking of /etc/apache2/conf.d/iptotal.
+  * debian/patches:
+    - 07_cgi_filename.diff: fixes incorrect filenames for graph images.
+      (Closes: #574121)
+  * debian/README.debian:
+    - Explains the different directory changes that occurred over the last
+      releases of iptotal.
+    - Shows how to configure iptotal with apache2.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Wed, 31 Mar 2010 00:57:48 +0200
+
 iptotal (0.3.3-11) unstable; urgency=low
 
   * debian/rules:
