@@ -34,7 +34,7 @@ endif
 ifneq "$(wildcard /usr/share/misc/config.guess)" ""
 	cp -f /usr/share/misc/config.guess config.guess
 endif
-	./configure $(confflags) --prefix=/usr --mandir=\$${prefix}/share/man --datadir=/usr/lib/iptotal --sysconf=/etc/iptotal
+	./configure $(confflags) --prefix=/usr --mandir=\$${prefix}/share/man --datadir=/var/lib/iptotal --sysconf=/etc/iptotal
 
 build: build-stamp
 build-stamp:  config.status
@@ -61,12 +61,12 @@ install: build
 	dh_prep 
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/iptotal
-	mv $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.cgi $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal
+	mv $(CURDIR)/debian/iptotal/var/lib/iptotal/*.cgi $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal
 	for i in $(CURDIR)/debian/iptotal/usr/lib/cgi-bin/iptotal/*.cgi; do chmod +x $$i; done
-	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.gif
-	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/*.png
-	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/archive/*.png
-	rm -f $(CURDIR)/debian/iptotal/usr/lib/iptotal/images/*.png
+	rm -f $(CURDIR)/debian/iptotal/var/lib/iptotal/*.gif
+	rm -f $(CURDIR)/debian/iptotal/var/lib/iptotal/*.png
+	rm -f $(CURDIR)/debian/iptotal/var/lib/iptotal/archive/*.png
+	rm -f $(CURDIR)/debian/iptotal/var/lib/iptotal/images/*.png
 
 binary-arch: build install
 	dh_testdir

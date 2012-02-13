@@ -9,21 +9,48 @@ set -e
 
 case "$1" in
 	configure)
-	    chown -R www-data:www-data /usr/lib/iptotal/*
-
 	    # reload apache2 configuration
 	    invoke-rc.d apache2 reload
 
         # Copy old user files (if they are present)
-        if [ -d "/var/www/iptotal/archive" ]; then
-            cp /var/www/iptotal/archive/* /usr/lib/iptotal/archive/
-        fi
-        for file in iptotal.rrd result.txt
+        # Check archive and images directories
+        for folder in archive images
         do
-            if [ -f "/var/www/iptotal/${file}" ]; then
-                cp /var/www/iptotal/${file} /usr/lib/iptotal/
+            if [ -d "/usr/lib/iptotal/${folder}" ]; then
+            # case of update from 0.3.3-10 in which the working
+            # directory is /usr/lib/iptotal/
+                for file in `find /usr/lib/iptotal/${folder}/ -maxdepth 1 -type f`
+                do
+                    cp ${file} /var/lib/iptotal/${folder}
+                done
+                # delete files from old directories
+                rm -f /usr/lib/iptotal/${folder}/*
+                rm -f /var/www/iptotal/${folder}/*
+            elif [ -d "/var/www/iptotal/${folder}" ]; then
+            # case of update from 0.3.3-9 or older in which the working
+            # directory is /var/www/iptotal/
+                for file in `find /var/www/iptotal/${folder}/ -maxdepth 1 -type f`
+                do
+                    cp ${file} /var/lib/iptotal/${folder}
+                done
+                # delete files from old directory
+                rm -f /var/www/iptotal/${folder}/*
             fi
         done
+        for file in iptotal.rrd result.txt
+        do
+            if [ -f "/usr/lib/iptotal/${file}" ]; then
+                cp -f /usr/lib/iptotal/${file} /var/lib/iptotal/
+                rm -f /usr/lib/iptotal/${file}
+                rm -f /var/www/iptotal/${file}
+            elif [ -f "/var/www/iptotal/${file}" ]; then
+                cp -f /var/www/iptotal/${file} /var/lib/iptotal/
+                rm -f /var/www/iptotal/${file}
+            fi
+        done
+
+        # change ownership to www-data
+	    chown -R www-data:www-data /var/lib/iptotal/*
 	;;
 
 	abort-upgrade|abort-remove|abort-deconfigure)

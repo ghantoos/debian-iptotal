@@ -1,13 +1,29 @@
+iptotal (0.3.3-11) unstable; urgency=low
+
+  * debian/rules:
+    - Updated --data-dir from /usr/lib to /var/lib (Closes: #557972)
+  * debian/dirs, debian/install, debian/links, debian/apache.conf:
+    - Replaced usr/lib by var/lib.
+  * debian/postinst:
+    - Replaced /usr/lib by /var/lib.
+    - As installation path has changed in this release, added a temporary
+      copying of old files to the new working directory, and deletion of
+      files from old directories, to prevent data history loss.
+  * Removed debian/lintian-overrides file as it isn't needed anymore.
+
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Wed, 25 Nov 2009 18:03:58 +0100
+
 iptotal (0.3.3-10) unstable; urgency=low
 
-  * Fixes the FTBFS on GNU/kFreeBSD using a patch provided by Cyril Brulebois
-    <kibi@debian.org>. (Closes: #557165)
   * Converted to "3.0 (quilt)" format.
   * debian/rules:
     - Removed the include of dpatch.make.
     - Removed dh_testroot from the clean section.
   * debian/patches:
     - Converted all patches from dpatch(1) to quilt(1) format.
+    - 06_FTBFS_kFreeBSD.diff: Fixes the FTBFS on GNU/kFreeBSD. Thanks to 
+      Cyril Brulebois <kibi@debian.org> for providing the patch.
+      (Closes: #557165)
   * debian/control:
     - Removed dependecy on dpatch.
     - Added a dependency on quilt.
