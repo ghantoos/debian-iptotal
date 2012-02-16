@@ -1,14 +1,16 @@
 iptotal (0.3.3-13) unstable; urgency=low
 
   * debian/control:
-    - Added Vcs-Svn and Vcs-Browser fields as iptotal is now maintained in the
-      ext-maint SVN repository.
-    - Bumped Standards-Version to 3.9.1.
+    - Bumped Standards-Version to 3.9.2.
+    - Added the "DM-Upload-Allowed" field.
   * debian/patches:
     - 08_datalink_offset.diff: fixes iptotal not reporting traffic on PPP
       insterfaces. (Closes: #230649)
+  * debian/init:
+    - Added the Description LSB section.
+    - Added the status option.
 
- -- Ignace Mouzannar <mouzannar@gmail.com>  Mon, 06 Sep 2010 20:44:49 +0200
+ -- Ignace Mouzannar <mouzannar@gmail.com>  Thu, 16 Feb 2012 08:49:19 +0400
 
 iptotal (0.3.3-12) unstable; urgency=low
 

@@ -2,10 +2,9 @@ Source: iptotal
 Section: admin
 Priority: extra
 Maintainer: Ignace Mouzannar <mouzannar@gmail.com>
+DM-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7.0.50~), libpcap-dev, rrdtool, autotools-dev (>=20100122.1)
-Standards-Version: 3.9.1
-Vcs-Svn: svn://svn.debian.org/collab-maint/ext-maint/iptotal/trunk/
-Vcs-Browser: http://svn.debian.org/viewsvn/collab-maint/ext-maint/iptotal/trunk/
+Standards-Version: 3.9.2
 Homepage: http://sourceforge.net/projects/iptotal
 
 Package: iptotal
